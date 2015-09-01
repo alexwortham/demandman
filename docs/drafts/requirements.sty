@@ -1,0 +1,46 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{requirements}
+
+\def\team#1{\gdef\@team{#1}}
+\def\@team{\@latex@warning@no@line{No \noexpand\team given}}
+\def\customer#1{\gdef\@customer{#1}}
+\def\@customer{\@latex@warning@no@line{No \noexpand\customer given}}
+
+\newcommand\reqstitlepage{%
+\clearpage
+\thispagestyle{empty}
+~\vspace{1in}
+\begin{center}
+\vspace{1in}
+{\LARGE \@title} \par\vspace{3ex}
+{\large \@date} \par\vspace{3ex}
+{\large Team \@team} \par\vspace{1ex}
+\@author \par\vspace{3ex}
+{\large Customer} \par\vspace{1ex}
+\@customer
+\end{center}
+\clearpage
+}
+
+\newcommand\requirements{}
+\newcommand\req[1]{\label{req #1}}
+\newcommand\refreq[1]{\ref{req #1}}
+
+\usepackage{setspace}
+%\setlength{\parindent}{0.5in}
+\usepackage[margin=1in]{geometry}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[notes,natbib,isbn=false,backend=biber]{biblatex-chicago}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=Blue
+}
+
+\newcommand\signanddate[1]{
+~\par\vspace{.5in}
+\par\noindent\makebox[2.5in]{\hrulefill} \hfill\makebox[2.0in]{\hrulefill}
+\par\noindent\makebox[2.5in][l]{#1} \hfill\makebox[2.0in][l]{~Date}
+}
+
+\endinput
