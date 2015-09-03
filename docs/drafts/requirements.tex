@@ -35,10 +35,60 @@
 	
 	&& The product's electrical components must be protected by a NEMA Type 3R enclosure. (\href{https://www.nema.org/Products/Documents/nema-enclosure-types.pdf}{https://www.nema.org/Products/Documents/nema-enclosure-types.pdf})
 	&& The product's components must comply with International Protection Marketing Code 25 (IP25. \href{http://www.dsmt.com/pdf/resources/iprating.pdf}{http://www.dsmt.com/pdf/resources/iprating.pdf}).
+
+& \req{home view}User Interface -- Home view.
 	
+	&& The view has a ``Edit Configuration'' button.
+		&&& When the user presses this button they are presented with the Product
+		Configuration View \refreq{prod conf view}.
+	&& The view lists all configured appliances in order of their assigned
+	priority.
+	&& Each appliance displays its state \refreq{appliance state}.
+	&& \req{appliance state}Each appliance may be in exactly one of the following
+	states at a given time.
+		&&& Powered on.
+		&&& Powered off.
+	&& Appliances which are in the powered on state will display their current
+	demand in kilowatts as a number.
+	&& Pressing on an appliance will present the Appliance Usage History View.
+	&& The view lists the current cost towards the current billing cycle.
+	&& The view lists the predicted total cost towards the current billing cycle.
+			
 & \req{information}User Interface -- Information.
 
+	&& \req{app usage history view}Appliance Usage History View.
+		&&& The view displays the appliance's state.
+		&&& Appliances which are in the powered on state will display their current
+		demand in kilowatts as a number.
+		&&& The view has a graph of the appliance's demand history by kilowatts.
+			&&&& More specifics\ldots 
+		&&& The view has a graph of the appliance's cost history.
+			&&&& More specifics\ldots 
+		&&& The view displays the appliance's current cost towards the current billing
+		cycle.
+		&&& The view displays the appliance's predicted total cost towards the current
+		billing cycle.
+
 & \req{behaviors}User Interface -- Configurable Behaviors.
+
+	&& \req{adjust demand limits}Adjust Demand Limits View.
+		&&& The view has a slider that controls the demand limit preference.
+			&&&& The slider is scaled by dollar amounts.
+			&&&& The minimum value of the slider is the calculated cost of the demand
+			limit minimum \refreq{demand limit min}.
+			&&&& The maximum value of the slider is the calculated cost of the demand
+			limit maximum \refreq{demand limit max}.  
+		&&& \req{demand limit min}The minimum value of the demand limit is the 
+		greatest max demand of each individual appliance.
+		&&& \req{demand limit max}The demand limit has a maximum value of the sum of
+		all appliances' max demand.
+		&&& The view has a ``Save Changes'' button.
+			&&&& Pressing this button saves the demand limit preference to the database.
+			&&&& Pressing this button returns the user to the Product Configuration View
+			\refreq{prod conf view}.
+		&&& The view has a ``Cancel'' button.
+			&&&& Pressing this button returns the user to the Product Configuration View
+			\refreq{prod conf view}.
 
 & \req{configuration}User Interface -- Initial Configuration.
 
@@ -49,65 +99,99 @@
 		&&& Dish washers.
 		&&& Water heaters.
 		&&& Clothes dryers.
-		 
-	&& \req{home view}Home view.
-	
-		&&& The view has a ``Edit Configuration'' button.
-		&&& When the user presses ``Edit Configuration'' button they are presented
-		with the product configuration view \refreq{prod conf view}.
 		
+	&& \req{configure sensors view}Configure Sensors View.
+	
+		&&& The view lists all sensors connected to the controller.
+		&&& Each sensor has a ``Edit'' button next to it.
+			&&&& Pressing this button presents the Edit Sensor View \refreq{edit sensor
+			view}.
+		&&& The view has a ``Done'' button.
+			&&&& Pressing this button returns the user to the Product Configuration View
+			\refreq{prod conf view}.
+			
+	&& \req{edit sensor view}Edit Sensor View.
+
+		&&& The view has a field for the user to set a name for the sensor.
+		&&& The view has a field for the user to set the voltage of the circuit to
+		which the sensor is attached.
+		&&& The view has a field for the user to set the amperage of the breaker to
+		which the sensor is attached.
+		&&& The view has a ``Save Changes'' button.
+			&&&& Pressing this button saves the sensor configuration to the database.
+			&&&& Pressing this button returns the user to the Configure Sensors View
+			\refreq{configure sensors view}. 
+		&&& The view has a ``Cancel'' button.
+			&&&& Pressing this button discards any changes the user has made.
+			&&&& Pressing this button returns the user to the Configure Sensors View
+			\refreq{configure sensors view}. 
+		 
 	&& \req{edit appliance view}Edit Appliance View.
 	
 		&&& The view contains a field to enter a user defined name for the appliance.
 		&&& The view contains a drop down list to select the type of the appliance.
-			&&&& The list contains all appliance types listed in requirement \refreq{
-			appliance types}.
-			&&& The view displays the sensor associated with the appliance.
+			&&&& The list contains all appliance types listed in requirement 
+			\refreq{appliance types}.
+			&&& The view displays the name of the sensor associated with the appliance.
 		&&& The view contains a ``Save Changes'' button.
+			&&&& Pressing this button saves the appliance configuration to the
+			database.
+			&&&& Pressing this button presents the Product Configuration View
+			\refreq{prod conf view}.
 		&&& The view contains a ``Cancel'' button.
-		&&& Pressing the ``Save Changes'' button will execute the following actions
-in sequence.
-			&&&& Appliance configuration is saved to the database.
-			&&&& Presents the Product Configuration View.
+			&&&& Pressing this button discards any changes the user has made.
+			&&&& Pressing this button presents the Product Configuration View
+			\refreq{prod conf view}.
 		
 	
 	&& \req{delete app confirm view}Delete Appliance Confirmation View.
 	
 		&&& The view contains a warning message.
 		&&& The view has a ``Yes, delete appliance.'' button.
+			&&&& Pressing this button deletes the appliance from the database.
+			&&&& Pressing this button presents the Product Configuration View
+			\refreq{prod conf view}.
 		&&& The view has a ``No, just kidding.'' button.
-		&&& Pressing the ``Yes, delete appliance.'' button executes the following
-		actions in sequence.
-			&&&& Deletes the appliance from the database.
-			&&&& Presents the Product Configuration View.
+			&&&& Pressing this button presents the Product Configuration View
+			\refreq{prod conf view}.
 	
 	&& \req{add appliance view}Add Appliance View.
 	
-		&&& All requirements from the Edit Appliance View\refreq{edit appliance view}
+		&&& All requirements from the Edit Appliance View \refreq{edit appliance view}
 		are required by this view as well.
 		&&& The view contains a drop down list to select the sensor to associate with
 		the appliance.
-			&&& The list contains all configured sensors.
-			&&& Sensors which are not currently associated with an appliance are marked
+			&&&& The list contains all configured sensors.
+			&&&& Sensors which are not currently associated with an appliance are marked
 			as ``Available''.
-			&&& Sensors which are associated with another appliance are greyed out.
-			&&& Sensors which are associated with another appliance display the name of
+			&&&& Sensors which are associated with another appliance are greyed out.
+			&&&& Sensors which are associated with another appliance display the name of
 			the appliance to which they are associated.
 		
 	&& \req{prod conf view}Product Configuration View.
 	
-		&&& The view displays all currently configured appliances.
-			&&&& Each appliance has an ``Edit'' button.
-			&&&& Each appliance has a ``Delete'' button.
-		&&& The view has a ``Finished'' button.
+		&&& The view displays all currently configured appliances in order of their
+		assigned priority.
+		&&& Each appliance may be dragged and dropped to alter its priority.
+		&&& The view has an ``Adjust Demand Limits'' button.
+			&&&& When the user presses this button they are presented with the Adjust
+			Demand Limits View \refreq{adjust demand limits}.
+		&&& Each appliance has a ``Delete'' button.
+			&&&& When the user presses one of these buttons they
+		are presented with the Delete Appliance Confirmation View \refreq{delete app
+		confirm view}.
+		&&& Each appliance has an ``Edit'' button.
+			&&&& When the user presses one of these buttons they are presented with the
+			Edit Appliance View \refreq{edit appliance view}.
 		&&& The view has an ``Add Appliance'' button.
-		&&& When the user presses the ``Delete'' button next to an appliance they are
-		presented with the Delete Appliance Confirmation View.
-		&&& When the user presses the ``Edit'' button next to an appliance they are
-		presented with the Edit Appliance View.
-		&&& When the user presses the ``Add Appliance'' button they are presented with
-		the Add Appliance View.
-		&&& When the user presses the ``Finished'' button the Home View is presented.
+			&&&& When the user presses this button they are presented
+		with the Add Appliance View \refreq{add appliance view}.
+		&&& The view has a ``Finished'' button.
+			&&&& When the user presses this button the Home View \refreq{home view} is
+			presented.
+		&&& Thew view has a ``Configure Sensors'' button.
+			&&&& When the user presses this button the Configure Sensors View
+			\refreq{configure sensors view} is presented.
 
 \end{easylist}
 
