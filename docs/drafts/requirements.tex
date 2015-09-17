@@ -31,6 +31,47 @@
 %% @DocumentRequirement (4.1,"Numbered list of requirements initially agreed to by team and customer.")
 \begin{easylist}[articletoc] \requirements
 
+& \req{monitor hardware}Load Monitoring Device.
+
+	&& The load monitoring device must be able to measure the loads in Amperes of
+	four simulated circuits.
+		&&& Each of these four simulated circuits will belong to one of the appliance
+		types specified by requirement \refreq{appliance types}.
+	&& The device will capture the measured data into a database.
+		&&& Captured data requirements\ldots
+	&& The device will host a website used as the product's user interface.
+	(Implementation?)
+	&& The monitoring device must be able to shut off a simulated circuit according
+	to paraemters defined in the user interface.
+	&& The monitoring device must use captured data to stagger the start times of
+	simulation circuits to keep demand as low as possible. (Poorly written. Maybe
+	belongs in software)
+	&& The device must be able to send start \& stop commands to the load
+	simulation device \refreq{simulator hardware}.
+	&& When a circuit is chosen to be activated by the user, the device will decide
+	when is best to power on the appliance. (software)
+		&&& The user may choose to override this decision and activate the circuit
+		immediately. (software)
+
+& \req{simulator hardware}Load Simulation Device.
+
+	&& The load simulation device must be able to play back captured load data to
+	four load playback circuits (see requirement \refreq{playback circuit}).
+		&&& Load data format requirements\ldots
+	&& The device must be able to accept a command to start playback for a
+	specified circuit via web interface.
+	&& The device must be able to accept a command to stop playback for a
+	specified circuit via web interface.
+
+& \req{playback circuit}Load Playback Circuit.
+
+	&& It has six leds.
+	&& During playback the leds behave as follows.
+		&&& Leds are lit from left to right to display the current load on the
+		circuit.
+		&&& Each led represents a load of one kilowatt.
+		&&& More\ldots
+
 & \req{weather}Weather Resistance.
 	
 	&& The product's electrical components must be protected by a NEMA Type 3R enclosure. (\href{https://www.nema.org/Products/Documents/nema-enclosure-types.pdf}{https://www.nema.org/Products/Documents/nema-enclosure-types.pdf})
