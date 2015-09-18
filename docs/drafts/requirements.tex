@@ -42,12 +42,68 @@ major household appliances are run.  Given the time constraints on the project, 
 simulating AC loads on custom built DC circuits to reduce design complexity.  
 
 
+\clearpage
 %% @DocumentRequirement (4,"Requirements")
 \section{Requirements}
 
 %% @DocumentRequirement (4.1,"Numbered list of requirements initially agreed to by team and customer.")
 \begin{easylist}[articletoc] \requirements
 
+& Hardware
+
+	&& \req{simulation device} The simulation device will provide outputs
+	representative of the following appliances:
+		&&& Air conditioning unit
+		&&& Clothes dryer
+		&&& Dishwasher
+		&&& Water heater
+	
+	&& The monitoring system will detect the electrical DC current for each
+	appliance listed in requirement \refreq{simulation device}.
+	&& The monitoring system will monitor the current over time through each device
+	listed in requirement \refreq{simulation device}.
+	&& The control system will record demand usage data to a database.
+	
+& Software
+
+	&& A web-based user interface will be accessible to the user providing
+	the following data:
+		&&& The current power usage of each device listed
+		in requirement \refreq{simulation device}.
+		&&& The current aggregate power usage of all
+		devices listed in requirement \refreq{simulation device}.
+		&&& A summary of total power usage for the current
+		billing cycle.
+			&&&& This data will also be represented in a dollar amount.
+		&&& Which monitored appliances are currently using power.
+			&&&& ``Monitored appliances'' refers to the loads simulated by our simulation
+			device and controlled by our control system.
+		&&& Which devices can be activated while remaining under the specified demand
+		threshold.
+			&&&& The controller software will make a best effort attempt to prevent usage
+			in excess of this threshold based on current and historical load data.
+			&&&& This threshold will be specified by the user via the web-based
+			interface.
+			
+	
+	&& The software for this project will be divided into two distinct components.
+		&&& The simulation control component.
+		&&& The load monitoring and control component.
+		
+	&& The simulation control component will perform the following functions:
+		&&& Maintain a database containing load data for each of the appliance types
+		specified by requirement \refreq{simulation device}.
+		&&& Start playback of data via command from the user interface.
+		&&& Stop playback of data via command from the user interface.
+	
+	&& The loading monitoring and control component will perform the following
+	functions:
+		&&& Host a web server for the web-based interface.
+		&&& Control relays for each of the appliance types specified by requirement
+		\refreq{simulation device}.
+		&&& Send start and stop commands from the user interface to the simulation
+		control component.
+			
 \end{easylist}
 
 \section{Summary}
@@ -65,7 +121,6 @@ system, as well as a method for simulating real loads for the system to manage.
 The above requirements lay out the hardware and software needs of this project.
 
 
-\setstretch{2}
 % % @DocumentRequirement (9,"Signatures of all Team Members and Customer.")
 \clearpage
 \section{Customer Agreement}
@@ -74,10 +129,12 @@ The above requirements lay out the hardware and software needs of this project.
 
 The undersigned agree that the requirements outlined in this document meet all needs for the product.
 
-\signanddate{Ben Ealey}
+\signanddate{Harshal Upadhye}
+\signanddate{Dr. Mark Dean}
 \signanddate{Asanga Bandara}
 \signanddate{Doug Bouler}
 \signanddate{Alex Chaloux}
+\signanddate{Chauncey Meade}
 \signanddate{F. Alex Wortham}
 
 %% @DocumentRequirement (9.2,"Dissenting statements (signed) -- if any.")
